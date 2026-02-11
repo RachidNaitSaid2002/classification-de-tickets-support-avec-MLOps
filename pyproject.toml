@@ -1,0 +1,28 @@
+[project]
+name = "classification-de-tickets-support-avec-mlops"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "chromadb>=1.5.0",
+    "evidently>=0.7.20",
+    "ipykernel>=7.2.0",
+    "nltk>=3.9.2",
+    "notebook>=7.5.3",
+    "numpy>=2.4.2",
+    "pandas>=3.0.0",
+    "scikit-learn>=1.8.0",
+    "torch>=2.10.0",
+    "transformers>=5.1.0",
+]
+
+[dependency-groups]
+dev = [
+    "black>=26.1.0",
+    "pytest>=9.0.2",
+    "ruff>=0.15.0",
+]
+
+[[tool.uv.index]]
+url = "https://download.pytorch.org/whl/cpu"

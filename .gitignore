@@ -1,0 +1,31 @@
+Uses.md
+
+# Virtual env
+.venv/
+venv/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Data
+data/raw/*
+data/processed/*
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+
+# Models
+*.joblib
+*.pkl
+models/
+
+# Reports
+*.html
+reports/
+
+# Env variables
+.env
+.env.*
