@@ -3,18 +3,14 @@ name = "classification-de-tickets-support-avec-mlops"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
-requires-python = ">=3.12"
+requires-python = ">=3.12,<3.13"
 dependencies = [
-    "chromadb>=1.5.0",
-    "evidently>=0.7.20",
-    "ipykernel>=7.2.0",
-    "nltk>=3.9.2",
-    "notebook>=7.5.3",
-    "numpy>=2.4.2",
-    "pandas>=3.0.0",
-    "scikit-learn>=1.8.0",
-    "torch>=2.10.0",
-    "transformers>=5.1.0",
+    "matplotlib>=3.10.8",
+    "pandas>=2.2,<3",
+    "scikit-learn>=1.4,<2",
+    "seaborn>=0.13.2",
+    "torch>=2.2,<3",
+    "transformers>=4.40,<5",
 ]
 
 [dependency-groups]
@@ -25,4 +21,6 @@ dev = [
 ]
 
 [[tool.uv.index]]
+name = "pytorch"
 url = "https://download.pytorch.org/whl/cpu"
+explicit = true
