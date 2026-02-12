@@ -13,6 +13,7 @@ dependencies = [
     "transformers>=4.40,<5",
     "ipykernel>=6.29.3",
     "nltk>=3.9.2",
+    "sentence-transformers>=5.2.2",
 ]
 
 [dependency-groups]
