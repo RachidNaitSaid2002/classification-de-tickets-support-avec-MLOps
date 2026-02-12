@@ -29,4 +29,3 @@ reports/
 # Env variables
 .env
 .env.*
-03_nlp_cleaning.ipynb
