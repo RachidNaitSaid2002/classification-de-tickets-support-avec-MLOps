@@ -23,5 +23,5 @@ def load_data_from_chroma(collection_name="tickets"):
 
 if __name__ == "__main__":
     embd, labels = load_data_from_chroma()
-    print(embd)
-    print(labels)
+    print(embd[0])
+    print(labels[0])
