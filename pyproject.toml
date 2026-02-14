@@ -15,6 +15,7 @@ dependencies = [
     "nltk>=3.9.2",
     "sentence-transformers>=5.2.2",
     "chromadb>=1.5.0",
+    "evidently>=0.7.20",
 ]
 
 [dependency-groups]
