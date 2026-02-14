@@ -33,3 +33,9 @@ reports/
 # Env variables
 .env
 .env.*
+
+# Unit tests
+src/__unit__.py
+
+# Monitoring
+drift_report.html
