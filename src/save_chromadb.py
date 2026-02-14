@@ -13,4 +13,5 @@ vector_store.add_embeddings(
     ids=[str(i) for i in range(len(df))],
     embeddings=embeddings,
     documents=df["text_final"].tolist(),
+    labels=df["type"].tolist(),
 )
