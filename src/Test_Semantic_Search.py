@@ -33,7 +33,7 @@ def search_tickets(query_text, n_results=5, persist_directory="./chroma"):
     embed_start = time.time()
     embedder = EmbeddingGenerator()
     embeddings = embedder.encode(query_text)
-    embed_time = (time.time() - embed_start) * 1000  
+    embed_time = (time.time() - embed_start) * 1000
     print(f"Embedding generation: {embed_time:.2f}ms")
 
     # Vector search latency
@@ -41,10 +41,10 @@ def search_tickets(query_text, n_results=5, persist_directory="./chroma"):
     results = collection.query(
         query_embeddings=embeddings.tolist(), n_results=n_results
     )
-    query_time = (time.time() - query_start) * 1000  
+    query_time = (time.time() - query_start) * 1000
     print(f"Vector search: {query_time:.2f}ms")
 
-    total_time = (time.time() - total_start) * 1000 
+    total_time = (time.time() - total_start) * 1000
     print(f"Total latency: {total_time:.2f}ms")
 
     response = {

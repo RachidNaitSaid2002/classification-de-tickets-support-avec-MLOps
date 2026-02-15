@@ -6,13 +6,16 @@ class VectorStore:
         self.client = chromadb.PersistentClient(path=persist_directory)
         self.collection = self.client.get_or_create_collection(collection_name)
 
-    def add_embeddings(self, ids, embeddings, documents, labels=None, batch_size=5000):
+    def add_embeddings(
+        self, ids, embeddings, documents, labels=None, batch_size=5000
+    ):
         embeddings_list = embeddings.tolist()
         total = len(ids)
 
         for i in range(0, total, batch_size):
             end_idx = min(i + batch_size, total)
-            print(f"Adding batch {i // batch_size + 1}: items {i} to {end_idx - 1}")
+            print(f"Adding batch {i // batch_size + 1}: "
+                  f"items {i} to {end_idx - 1}")
 
             batch_data = {
                 "ids": ids[i:end_idx],

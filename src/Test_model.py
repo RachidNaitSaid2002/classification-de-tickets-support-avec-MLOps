@@ -1,5 +1,4 @@
 import joblib
-import numpy as np
 from embeddings import EmbeddingGenerator
 
 # Load model
