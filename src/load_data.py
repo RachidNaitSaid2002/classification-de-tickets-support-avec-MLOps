@@ -1,7 +1,7 @@
 import chromadb
 import numpy as np
-import pandas as pd
 from chromadb.config import Settings
+
 
 def load_data_from_chroma(collection_name="tickets"):
     client = chromadb.Client(
@@ -10,14 +10,10 @@ def load_data_from_chroma(collection_name="tickets"):
             is_persistent=True
         )
     )
-
     collection = client.get_collection(collection_name)
-
     data = collection.get(include=["embeddings", "metadatas", "documents"])
-
     embeddings = np.array(data["embeddings"])
     labels = [meta["type"] for meta in data["metadatas"]]
-
     return embeddings, labels
 
 

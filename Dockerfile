@@ -1,27 +1,29 @@
+# Use slim Python image
 FROM python:3.12-slim
 
+# Set working directory
 WORKDIR /app
 
-# Install system dependencies
+# Install system dependencies (if needed, can add more later)
 RUN apt-get update && apt-get install -y --no-install-recommends \
+    build-essential \
     && rm -rf /var/lib/apt/lists/*
 
-# Copy requirements first for better caching
+# Copy requirements first to leverage Docker cache
 COPY requirements.txt .
 
 # Install Python dependencies
+RUN pip install --no-cache-dir --upgrade pip
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy application code
-COPY src/ ./src/
-COPY monitoring/ ./monitoring/
-COPY models/ ./models/
-COPY data/ ./data/
-COPY chroma/ ./chroma/
+# Copy all project files (excluding what's in .dockerignore)
+COPY . .
 
-# Create output directory
+# Ensure output directory exists
 RUN mkdir -p /app/output
 
+# Set PYTHONPATH
 ENV PYTHONPATH=/app
 
+# Default command
 CMD ["python", "-m", "src.model_training"]

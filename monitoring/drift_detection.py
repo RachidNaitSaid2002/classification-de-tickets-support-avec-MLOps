@@ -5,9 +5,9 @@ import numpy as np
 import joblib
 from evidently import DataDefinition, Dataset, Report
 from evidently.presets import DataDriftPreset
+from src.load_data import load_data_from_chroma
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
-from src.load_data import load_data_from_chroma
 
 # Load dataset
 Features, labels = load_data_from_chroma()
@@ -44,19 +44,27 @@ current_df = df.drop(reference_df.index)
 
 # Define the data mapping using vector statistics
 data_definition = DataDefinition(
-    numerical_columns=["vec_mean", "vec_std", "vec_min", "vec_max", "vec_norm"],
+    numerical_columns=[
+        "vec_mean", "vec_std", "vec_min", "vec_max", "vec_norm"
+    ],
     categorical_columns=["labels", "prediction", "label_encoded"],
 )
 
 # Wrap data in Evidently Dataset objects
-reference_dataset = Dataset.from_pandas(reference_df, data_definition=data_definition)
-current_dataset = Dataset.from_pandas(current_df, data_definition=data_definition)
+reference_dataset = Dataset.from_pandas(
+    reference_df, data_definition=data_definition
+)
+current_dataset = Dataset.from_pandas(
+    current_df, data_definition=data_definition
+)
 
 # Create a Report with the Data Drift preset
 report = Report(metrics=[DataDriftPreset()])
 
 # Run the report
-result = report.run(reference_data=reference_dataset, current_data=current_dataset)
+result = report.run(
+    reference_data=reference_dataset, current_data=current_dataset
+)
 
 # Save it as an interactive HTML file
 result.save_html(str(Path(__file__).parent / "drift_report.html"))
