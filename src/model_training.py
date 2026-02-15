@@ -4,6 +4,7 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import classification_report
 import joblib
 
+from src.load_data import load_data_from_chroma
 
 def train_model(X, y):
 
@@ -32,3 +33,8 @@ def train_model(X, y):
     print("Model saved successfully.")
 
     return clf
+
+if __name__ == "__main__":
+    Features, labels = load_data_from_chroma()
+    train_model(Features, labels)
+
